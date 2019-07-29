@@ -8,7 +8,6 @@ import * as subscribe from './subscribe';
 const MessagesList = props => {
   const { orderBy, filter } = props;
 
-
   return (
     <Query query={MESSAGE_QUERY} variables={{ orderBy, filter }}>
       {({ loading, error, data, subscribeToMore }) => {
