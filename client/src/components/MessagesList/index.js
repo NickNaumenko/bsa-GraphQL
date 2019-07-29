@@ -5,6 +5,8 @@ import Message from '../Message';
 import { MESSAGE_QUERY } from '../../queries';
 import * as subscribe from './subscribe';
 
+import './style.css';
+
 const MessagesList = props => {
   const { orderBy, filter } = props;
 
@@ -20,7 +22,7 @@ const MessagesList = props => {
         const { messages: { messagesList } } = data;
 
         return (
-          <Comment.Group size="large">
+          <Comment.Group size="large" className="messages-list">
             {messagesList.map(message => {
               return <Message key={message.id} {...message} />
             })}

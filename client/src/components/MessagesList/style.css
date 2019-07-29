@@ -1,0 +1,7 @@
+.ui.comments.messages-list {
+  box-sizing: border-box;
+  height: calc(100vh - 280px);
+  margin-top: 0;
+  margin-bottom: 0;
+  overflow-y: scroll;
+}
