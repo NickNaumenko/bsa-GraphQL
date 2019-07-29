@@ -28,10 +28,10 @@ const MessagesList = props => {
 
         const { messages } = data;
         const { messages: { messagesList } } = data;
+        hasMore = messages.hasMore;
 
         const loadMore = () => {
           after = messages.cursor;
-          hasMore = messages.hasMore;
 
           fetchMore({
             query: MESSAGE_QUERY,
@@ -46,6 +46,7 @@ const MessagesList = props => {
                 ...prev, messages: {
                   ...messages,
                   cursor: newCursor,
+                  hasMore,
                   messagesList: [...prevMessages, ...newMessages]
                 }             
               }
