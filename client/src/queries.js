@@ -85,7 +85,9 @@ export const NEW_REPLY_SUBSCRIPTION = gql`
     newReply {
       id
       text
-      messageId
+      message {
+        id
+      }
     }
   }
 `;

@@ -41,8 +41,25 @@ const MessagesList = props => {
 
   const _subscribeToNewReply = subscribeToMore => {
     subscribeToMore({
-      document: NEW_REPLY_SUBSCRIPTION
-    })
+      document: NEW_REPLY_SUBSCRIPTION,
+      updateQuery: (prev, { subscriptionData }) => {
+        if (!subscriptionData.data) return prev;
+
+        const { newReply } = subscriptionData.data;
+
+        const message = prev.messages.messagesList.find(
+          item => item.id === newReply.message.id
+        );
+        const exists = message.replies.find(({ id }) => id === newReply.id);
+        if (exists) return prev;
+
+        message.replies.push(newReply);
+
+        return {
+          ...prev
+        }
+      }
+    });
   }
 
   return (
@@ -52,6 +69,7 @@ const MessagesList = props => {
         if (error) return <div>Fetch error</div>;
         _subscribeToNewMessages(subscribeToMore);
         _subscribeToUpdateMessage(subscribeToMore);
+        _subscribeToNewReply(subscribeToMore);
 
         const { messages: { messagesList } } = data;
 
