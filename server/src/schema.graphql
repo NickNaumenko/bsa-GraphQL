@@ -11,6 +11,8 @@ type Query {
 enum MessageOrderByInput {
   createdAt_DESC
   createdAt_ASC
+  likes_DESC
+  dislikes_DESC
 }
 
 type Mutation {

@@ -12,13 +12,23 @@ function App() {
   const sortOptions = [
     {
       key: 'createdAt_DESC',
-      text: 'createdAt_DESC',
+      text: 'newest',
       value: 'createdAt_DESC',
     },
     {
       key: 'createdAt_ASC',
-      text: 'createdAt_ASC',
+      text: 'oldest',
       value: 'createdAt_ASC',
+    },
+    {
+      key: 'likes_DESC',
+      text: 'likes',
+      value: 'likes_DESC',
+    },
+    {
+      key: 'dislikes_DESC',
+      text: 'dislikes',
+      value: 'dislikes_DESC',
     }
   ];
 

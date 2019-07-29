@@ -11,7 +11,7 @@ const ReplyForm = props => {
     <Mutation
       mutation={POST_REPLY_MUTATION}
       variables={{ messageId, text }}
-      update={(store, { data: { postReply } }) => {
+      update={() => {
         toggleForm(false);
       }}
     >
