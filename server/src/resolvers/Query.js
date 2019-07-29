@@ -7,19 +7,19 @@ async function messages(parent, args, context) {
     where,
     skip: args.skip,
     first: args.first,
-    orderBy: args.orderBy
+    orderBy: args.orderBy,
+    after: args.after
   });
-  
-  const count = await context.prisma
-    .messagesConnection({
-      where
-    })
-    .aggregate()
-    .count();
+
+  const lastMessage = messagesList[messagesList.length - 1];
+  const [cursor, hasMore] = lastMessage
+    ? [lastMessage.id, true]
+    : ["", false];
 
   return {
     messagesList,
-    count
+    cursor,
+    hasMore
   };
 }
 

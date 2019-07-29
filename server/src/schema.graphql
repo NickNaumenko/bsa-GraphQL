@@ -1,10 +1,10 @@
 type Query {
   info: String!
   messages(
-    filter: String,
-    skip: Int,
-    first: Int,
+    filter: String
+    first: Int
     orderBy: MessageOrderByInput
+    after: ID
   ): Messages!
 }
 
@@ -29,7 +29,8 @@ type Subscription {
 
 type Messages {
   messagesList: [Message]!
-  count: Int!
+  cursor: ID!
+  hasMore: Boolean!
 }
 
 type Message {

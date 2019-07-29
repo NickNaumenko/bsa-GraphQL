@@ -13,11 +13,13 @@ export const toNewMessages = subscribeToMore => {
       const { newMessage } = subscriptionData.data;
       const exists = prev.messages.messagesList.find(({ id }) => id === newMessage.id);
       if (exists) return prev;
+      const [cursor, hasMore] = [prev.messages.cursor, prev.messages.hasMore];
 
       return {
         ...prev, messages: {
           messagesList: [newMessage, ...prev.messages.messagesList],
-          count: prev.messages.messagesList.length + 1,
+          cursor,
+          hasMore,
           __typename: prev.messages.__typename
         }
       };
