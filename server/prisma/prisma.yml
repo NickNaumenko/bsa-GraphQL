@@ -1,0 +1,7 @@
+#endpoint: ''
+endpoint: https://eu1.prisma.sh/nick-naumenko/bsa-19-10/dev
+
+datamodel: datamodel.prisma
+generate:
+  - generator: javascript-client
+    output: ../src/generated/prisma-client

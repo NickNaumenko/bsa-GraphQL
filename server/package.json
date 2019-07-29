@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "start": "nodemon ./src"
+  },
+  "dependencies": {
+    "graphql-yoga": "^1.18.1",
+    "nodemon": "^1.19.1",
+    "prisma-client-lib": "^1.34.3"
+  }
+}
